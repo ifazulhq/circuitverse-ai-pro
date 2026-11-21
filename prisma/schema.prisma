@@ -1,0 +1,155 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime? @map("email_verified")
+  image         String?
+
+  plan                 String    @default("FREE")
+  subscriptionStatus   String    @default("ACTIVE")
+  stripeCustomerId     String?   @unique
+  stripeSubscriptionId String?   @unique
+  subscriptionEndsAt   DateTime?
+
+  // AI usage quota tracking (calendar-month window)
+  aiAssistantUsedThisMonth  Int       @default(0)
+  aiGenerationUsedThisMonth Int       @default(0)
+  aiUsageResetAt            DateTime?
+
+  // Cloud-synced user preferences
+  preferences Json?
+
+  accounts Account[]
+  sessions Session[]
+  projects Project[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String  @map("user_id")
+  type              String
+  provider          String
+  providerAccountId String  @map("provider_account_id")
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model Project {
+  id           String  @id @default(cuid())
+  name         String
+  description  String?
+  category     String
+  owner        String
+  status       String
+  priority     String
+  dueDate      String?
+  completion   Int     @default(0)
+  progress     Int     @default(0)
+  isFavorite   Boolean @default(false)
+  createdAt    String
+  updatedAt    String
+  lastOpenedAt String?
+
+  userId  String
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  circuit Circuit?
+  aiChats AIChat[]
+  simulationRuns SimulationRun[]
+
+  @@index([userId])
+}
+
+model Circuit {
+  id        String @id @default(cuid())
+  projectId String @unique
+
+  data Json
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+model AIChat {
+  id        String   @id @default(cuid())
+  projectId String
+  title     String   @default("New Chat")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  project  Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  messages AIMessage[]
+
+  @@index([projectId])
+}
+model AIMessage {
+  id        String   @id @default(cuid())
+  chatId    String
+  role      String
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+
+  chat AIChat @relation(fields: [chatId], references: [id], onDelete: Cascade)
+
+  @@index([chatId])
+}
+model SimulationRun {
+  id         String   @id @default(cuid())
+  projectId  String
+
+  status     String
+  errorCount Int      @default(0)
+
+  createdAt  DateTime @default(now())
+
+  project    Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@index([createdAt])
+}

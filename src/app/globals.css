@@ -24,3 +24,363 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Reduced Motion Settings & OS-Level Accessibility Override */
+html[data-motion="reduced"] *,
+html[data-motion="reduced"] *::before,
+html[data-motion="reduced"] *::after {
+  scroll-behavior: auto !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="full"]) *,
+  html:not([data-motion="full"]) *::before,
+  html:not([data-motion="full"]) *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Multi-Theme Engine: Light Studio & Cyberpunk Neon */
+html[data-theme="light"] {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+}
+
+html[data-theme="light"] body {
+  background: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .bg-zinc-950,
+html[data-theme="light"] .bg-zinc-900 {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .bg-zinc-900\/40,
+html[data-theme="light"] .bg-zinc-900\/50,
+html[data-theme="light"] .bg-zinc-900\/60,
+html[data-theme="light"] .bg-zinc-900\/70,
+html[data-theme="light"] .bg-zinc-900\/80,
+html[data-theme="light"] .bg-zinc-950\/50,
+html[data-theme="light"] .bg-zinc-950\/60,
+html[data-theme="light"] .bg-zinc-950\/80,
+html[data-theme="light"] .bg-zinc-950\/90 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .bg-zinc-800,
+html[data-theme="light"] .bg-zinc-800\/80 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .border-zinc-800,
+html[data-theme="light"] .border-zinc-800\/80,
+html[data-theme="light"] .border-zinc-800\/90,
+html[data-theme="light"] .border-zinc-700,
+html[data-theme="light"] .border-zinc-700\/80,
+html[data-theme="light"] .border-gray-800,
+html[data-theme="light"] .border-gray-700 {
+  border-color: #e2e8f0 !important;
+}
+
+html[data-theme="light"] .text-white:not(button):not(button *):not([role="button"]):not([role="button"] *):not(.btn):not(.btn *):not(.badge):not(.badge *) {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .circuit-wire-path {
+  color: #0284c7 !important;
+}
+
+html[data-theme="light"] .text-zinc-300,
+html[data-theme="light"] .text-zinc-400,
+html[data-theme="light"] .text-gray-400 {
+  color: #475569 !important;
+}
+
+html[data-theme="light"] .text-zinc-500,
+html[data-theme="light"] .text-gray-500 {
+  color: #64748b !important;
+}
+
+html[data-theme="light"] .wire-bridge-mask {
+  fill: #ffffff !important;
+}
+
+html[data-theme="light"] .timing-grid-line {
+  stroke: #cbd5e1 !important;
+}
+
+html[data-theme="light"] .timing-rail-guide {
+  stroke: #94a3b8 !important;
+}
+
+html[data-theme="light"] .timing-label-text {
+  fill: #475569 !important;
+}
+
+html[data-theme="cyberpunk"] {
+  --background: #080010;
+  --foreground: #00f0ff;
+}
+
+html[data-theme="cyberpunk"] body {
+  background: #080010 !important;
+  color: #00f0ff !important;
+}
+
+html[data-theme="cyberpunk"] .bg-zinc-950 {
+  background-color: #0a0116 !important;
+}
+
+html[data-theme="cyberpunk"] .bg-zinc-900 {
+  background-color: #120224 !important;
+}
+
+html[data-theme="cyberpunk"] .bg-zinc-900\/40,
+html[data-theme="cyberpunk"] .bg-zinc-900\/50,
+html[data-theme="cyberpunk"] .bg-zinc-900\/60,
+html[data-theme="cyberpunk"] .bg-zinc-900\/70,
+html[data-theme="cyberpunk"] .bg-zinc-900\/80,
+html[data-theme="cyberpunk"] .bg-zinc-950\/50,
+html[data-theme="cyberpunk"] .bg-zinc-950\/60,
+html[data-theme="cyberpunk"] .bg-zinc-950\/80,
+html[data-theme="cyberpunk"] .bg-zinc-950\/90 {
+  background-color: rgba(22, 3, 42, 0.78) !important;
+}
+
+html[data-theme="cyberpunk"] .border-zinc-800,
+html[data-theme="cyberpunk"] .border-zinc-800\/80,
+html[data-theme="cyberpunk"] .border-zinc-800\/90,
+html[data-theme="cyberpunk"] .border-gray-800 {
+  border-color: rgba(255, 0, 128, 0.3) !important;
+}
+
+html[data-theme="cyberpunk"] .border-cyan-500\/50,
+html[data-theme="cyberpunk"] .border-cyan-500\/30 {
+  border-color: rgba(0, 240, 255, 0.6) !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.25) !important;
+}
+
+html[data-theme="cyberpunk"] .text-cyan-400,
+html[data-theme="cyberpunk"] .text-cyan-300 {
+  color: #00f0ff !important;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+html[data-theme="cyberpunk"] .wire-bridge-mask {
+  fill: #080010 !important;
+}
+
+html[data-theme="cyberpunk"] .timing-grid-line {
+  stroke: rgba(255, 0, 128, 0.25) !important;
+}
+
+html[data-theme="cyberpunk"] .timing-rail-guide {
+  stroke: rgba(0, 240, 255, 0.4) !important;
+}
+
+html[data-theme="cyberpunk"] .timing-label-text {
+  fill: #00f0ff !important;
+}
+
+/* Base Wire Bridge and Timing Diagram SVG styles (Dark Space Default) */
+.wire-bridge-mask {
+  fill: #09090b;
+}
+
+.timing-grid-line {
+  stroke: #27272a;
+}
+
+.timing-rail-guide {
+  stroke: #3f3f46;
+}
+
+.timing-label-text {
+  fill: #71717a;
+}
+
+/* Custom slim scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.3);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.5);
+}
+
+/* Compact Interface Density */
+html[data-density="compact"] {
+  font-size: 14px;
+}
+
+html[data-density="compact"] .p-6 {
+  padding: 1rem !important;
+}
+
+html[data-density="compact"] .gap-6 {
+  gap: 1rem !important;
+}
+
+html[data-density="compact"] .py-3 {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Cybernetic Keyframes */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(30px, -25px) scale(1.06);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(-25px, 20px) scale(0.96);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+    filter: drop-shadow(0 0 15px rgba(34, 211, 238, 0.3));
+  }
+  50% {
+    opacity: 0.75;
+    filter: drop-shadow(0 0 35px rgba(34, 211, 238, 0.7));
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes wire-flow {
+  from {
+    stroke-dashoffset: 24;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 14s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 18s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.animate-shimmer-sweep {
+  animation: shimmer-sweep 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-wire-flow {
+  animation: wire-flow 1.2s linear infinite;
+}
+
+@keyframes cascade-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes chat-bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes tab-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes neural-wave {
+  0%, 100% {
+    transform: scaleY(0.35);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.animate-cascade {
+  animation: cascade-enter 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-chat-bubble {
+  animation: chat-bubble-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-tab-panel {
+  animation: tab-enter 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-neural-wave {
+  animation: neural-wave 1.2s ease-in-out infinite;
+}
+
+/* Background grid patterns */
+.bg-cyber-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-circuit-dots {
+  background-image: radial-gradient(rgba(34, 211, 238, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}

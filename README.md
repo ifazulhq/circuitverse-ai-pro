@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CircuitVerse AI Pro
 
-## Getting Started
+Cloud-native digital logic circuit CAD studio with Gemini AI sub-circuit synthesis, real-time timing waveforms, and truth table diagnostics.
 
-First, run the development server:
+**Live App:** [https://circuitverse-ai-pro.vercel.app](https://circuitverse-ai-pro.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+CircuitVerse AI Pro is a full-stack electronic design automation (EDA) and digital logic simulation platform built for designing, simulating, and analyzing combinational and sequential circuits directly in the browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Key Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Interactive Logic Canvas & Simulation Engine:** Place logic gates, multiplexers/demultiplexers, adders, and sequential latches, wire connections, toggle inputs, and run real-time simulation states.
+- **Timing Diagram & Logic Analyzer:** Inspect live HIGH/LOW signal waveforms and simulation cycles.
+- **Combinational Truth Table Solver:** Validate input/output behavior and circuit logic automatically.
+- **AI Copilot & Sub-Circuit Synthesis:** Generate sub-circuits, analyze signal flow, inspect truth tables, and troubleshoot circuit errors using Google Gemini AI.
+- **Cloud Persistence & Themes:** Save projects, circuits, simulation runs, and user preferences to PostgreSQL with support for Light, Dark, and Cyberpunk themes.
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Framework & UI:** Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4
+- **Database & ORM:** PostgreSQL (Neon with connection pooling), Prisma ORM 7
+- **Authentication:** NextAuth (Google OAuth)
+- **AI:** Google Gemini AI (`@google/genai`)
+- **Payments:** Stripe (subscription checkout & plan management)
+- **Hosting:** Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Local Development
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Install dependencies:**
+   ```bash
+   npm install
